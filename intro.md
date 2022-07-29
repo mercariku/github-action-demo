@@ -1,4 +1,4 @@
-GitHub Actions with Jupyter Book
+Equity Research Associate
 ================================
 
 This is a small sample book built with GitHub Actions. It was built using the
