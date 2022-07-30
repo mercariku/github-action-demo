@@ -23,21 +23,28 @@ import numpy as np
 import plotly.express as px 
 import datapane as dp
 import pandas as pd
-import io
+import io, os
 from dotenv import load_dotenv
 
 load_dotenv()
-dp.login(token=os.getenv('DATAPANE_TOKEN'))
+dp.login(token=os.environ['DATAPANE_TOKEN'])
 
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1947/2265473477.py[0m in [0;36m<module>[0;34m[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m/tmp/ipykernel_1907/3853721945.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      9[0m [0;34m[0m[0m
 [1;32m     10[0m [0mload_dotenv[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 11[0;31m [0mdp[0m[0;34m.[0m[0mlogin[0m[0;34m([0m[0mtoken[0m[0;34m=[0m[0mos[0m[0;34m.[0m[0mgetenv[0m[0;34m([0m[0;34m'DATAPANE_TOKEN'[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 11[0;31m [0mdp[0m[0;34m.[0m[0mlogin[0m[0;34m([0m[0mtoken[0m[0;34m=[0m[0mos[0m[0;34m.[0m[0menviron[0m[0;34m[[0m[0;34m'DATAPANE_TOKEN'[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;31mNameError[0m: name 'os' is not defined
-NameError: name 'os' is not defined
+[0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/os.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m    679[0m         [0;32mexcept[0m [0mKeyError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    680[0m             [0;31m# raise KeyError with the original key value[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 681[0;31m             [0;32mraise[0m [0mKeyError[0m[0;34m([0m[0mkey[0m[0;34m)[0m [0;32mfrom[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    682[0m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mdecodevalue[0m[0;34m([0m[0mvalue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    683[0m [0;34m[0m[0m
+
+[0;31mKeyError[0m: 'DATAPANE_TOKEN'
+KeyError: 'DATAPANE_TOKEN'
 
