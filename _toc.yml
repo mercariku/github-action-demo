@@ -4,3 +4,7 @@ entries:
 - file: markdown
 - file: syntax
 - file: notebooks
+- file: csv/FidelityInternational_JP_FinancialStatement_ChuckMcKenzie.csv
+- file: csv/FidelityInternational_JP_FinancialStatement_DerekYoung.csv
+- file: csv/FidelityInternational_JP_FinancialStatement_JudiMarlinski.csv
+- file: assets
