@@ -4,3 +4,4 @@ numpy
 datapane
 plotly.express
 pandas
+python-dotenv

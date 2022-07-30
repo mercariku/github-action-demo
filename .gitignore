@@ -131,4 +131,4 @@ dmypy.json
 # Docs
 _build
 
-assets.py
+.env
