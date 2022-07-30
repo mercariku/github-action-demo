@@ -326,60 +326,103 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">datapane</span> <span class="k">as</span> <span class="nn">dp</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">secrets</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">DATAPANE_TOKEN</span><span class="p">)</span>
-<span class="c1"># dp.login(token=DATAPANE_TOKEN)</span>
+<span class="kn">import</span> <span class="nn">assets</span>
+<span class="n">dp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">assets</span><span class="o">.</span><span class="n">DATAPANE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1778</span><span class="o">/</span><span class="mf">3747162033.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">secrets</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> 
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="n">DATAPANE_TOKEN</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># dp.login(token=DATAPANE_TOKEN)</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1771</span><span class="o">/</span><span class="mf">1010751255.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">io</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">assets</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">dp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">assets</span><span class="o">.</span><span class="n">DATAPANE</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;DATAPANE_TOKEN&#39; is not defined
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;assets&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span> <span class="p">(</span><span class="s2">&quot;csv/FidelityInternational_JP_FinancialStatement.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">sunburst</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Name1&quot;</span><span class="p">,</span><span class="s2">&quot;Qtr1&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">],</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Name1&quot;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">/Users/riku/projects/github-action-demo/notebooks.ipynb Cell 3</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/riku/projects/github-action-demo/notebooks.ipynb#ch0000001?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">sunburst</span><span class="p">(</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/riku/projects/github-action-demo/notebooks.ipynb#ch0000001?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">df</span><span class="p">,</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/riku/projects/github-action-demo/notebooks.ipynb#ch0000001?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Name1&quot;</span><span class="p">,</span><span class="s2">&quot;Qtr1&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">],</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/riku/projects/github-action-demo/notebooks.ipynb#ch0000001?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">values</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/riku/projects/github-action-demo/notebooks.ipynb#ch0000001?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Name1&quot;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/riku/projects/github-action-demo/notebooks.ipynb#ch0000001?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/riku/projects/github-action-demo/notebooks.ipynb#ch0000001?line=6&#39;</span><span class="o">&gt;</span><span class="mi">7</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
+<span class="nn">File ~/.pyenv/versions/3.8.9/lib/python3.8/site-packages/plotly/express/_chart_types.py:1541,</span> in <span class="ni">sunburst</span><span class="nt">(data_frame, names, values, parents, path, ids, color, color_continuous_scale, range_color, color_continuous_midpoint, color_discrete_sequence, color_discrete_map, hover_name, hover_data, custom_data, labels, title, template, width, height, branchvalues, maxdepth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1539</span> <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">branchvalues</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1540</span>     <span class="n">branchvalues</span> <span class="o">=</span> <span class="s2">&quot;total&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1541</span> <span class="k">return</span> <span class="n">make_figure</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1542</span>     <span class="n">args</span><span class="o">=</span><span class="nb">locals</span><span class="p">(),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1543</span>     <span class="n">constructor</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Sunburst</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1544</span>     <span class="n">trace_patch</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">branchvalues</span><span class="o">=</span><span class="n">branchvalues</span><span class="p">,</span> <span class="n">maxdepth</span><span class="o">=</span><span class="n">maxdepth</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1545</span>     <span class="n">layout_patch</span><span class="o">=</span><span class="n">layout_patch</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1546</span> <span class="p">)</span>
 
+<span class="nn">File ~/.pyenv/versions/3.8.9/lib/python3.8/site-packages/plotly/express/_core.py:1992,</span> in <span class="ni">make_figure</span><span class="nt">(args, constructor, trace_patch, layout_patch)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1990</span> <span class="n">args</span> <span class="o">=</span> <span class="n">build_dataframe</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">constructor</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1991</span> <span class="k">if</span> <span class="n">constructor</span> <span class="ow">in</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Treemap</span><span class="p">,</span> <span class="n">go</span><span class="o">.</span><span class="n">Sunburst</span><span class="p">,</span> <span class="n">go</span><span class="o">.</span><span class="n">Icicle</span><span class="p">]</span> <span class="ow">and</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1992</span>     <span class="n">args</span> <span class="o">=</span> <span class="n">process_dataframe_hierarchy</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1993</span> <span class="k">if</span> <span class="n">constructor</span> <span class="ow">in</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Pie</span><span class="p">]:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1994</span>     <span class="n">args</span><span class="p">,</span> <span class="n">trace_patch</span> <span class="o">=</span> <span class="n">process_dataframe_pie</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">trace_patch</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
+<span class="nn">File ~/.pyenv/versions/3.8.9/lib/python3.8/site-packages/plotly/express/_core.py:1545,</span> in <span class="ni">process_dataframe_hierarchy</span><span class="nt">(args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1543</span> <span class="n">df</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;data_frame&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1544</span> <span class="n">path</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">1545</span> <span class="n">_check_dataframe_all_leaves</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">path</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="g g-Whitespace">   </span><span class="mi">1546</span> <span class="n">discrete_color</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1548</span> <span class="n">new_path</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+<span class="nn">File ~/.pyenv/versions/3.8.9/lib/python3.8/site-packages/plotly/express/_core.py:1532,</span> in <span class="ni">_check_dataframe_all_leaves</span><span class="nt">(df)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1530</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row_strings</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1531</span>     <span class="k">if</span> <span class="n">row_strings</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">row</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">null_indices</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1532</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1533</span>             <span class="s2">&quot;Non-leaves rows are not permitted in the dataframe </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1534</span>             <span class="n">df_sorted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1535</span>             <span class="s2">&quot;is not a leaf.&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1536</span>         <span class="p">)</span>
+
+<span class="ne">ValueError</span>: (&#39;Non-leaves rows are not permitted in the dataframe \n&#39;, Name1    
+<span class="n">Qtr1</span>     
+<span class="mi">1</span>        
+<span class="mi">2</span>        
+<span class="mi">3</span>        
+<span class="mi">4</span>        
+<span class="ne">Name</span>: 136, dtype: object, &#39;is not a leaf.&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <p>There is a lot more that you can do with outputs (such as including interactive outputs)
 with your book. For more information about this, see <a class="reference external" href="https://executablebooks.github.io/cli/start/overview.html">the Jupyter Book documentation</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 
     <script type="text/x-thebe-config">
     {
