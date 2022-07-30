@@ -330,29 +330,144 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
 
 <span class="n">load_dotenv</span><span class="p">()</span>
-<span class="n">dp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATAPANE_TOKEN&#39;</span><span class="p">])</span>
+<span class="n">dp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DATAPANE_TOKEN&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Opening login page.. Please complete login via this page and return to the terminal
+
+If the page didn&#39;t open, use the link below
+https://datapane.com/accounts/login/?signup_token=c526415c-3c07-4a54-9b31-f07bcbfd428d
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:Internal Python error in the inspect module.
+Below is the traceback from this internal error.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/datapane/client/api/user.py&quot;, line 182, in token_connect
+    time.sleep(5)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py&quot;, line 3553, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File &quot;/tmp/ipykernel_1753/2391824048.py&quot;, line 11, in &lt;module&gt;
+    dp.login(token=os.getenv(&#39;DATAPANE_TOKEN&#39;))
+  File &quot;/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/datapane/client/api/user.py&quot;, line 61, in login
+    token = token_connect(&quot;/accounts/login/&quot;, action=&quot;login&quot;, server=config.server)
+  File &quot;/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/datapane/client/api/user.py&quot;, line 185, in token_connect
+    sys.exit(1)
+SystemExit: 1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py&quot;, line 1101, in get_records
+    return _fixed_getinnerframes(etb, number_of_lines_of_context, tb_offset)
+  File &quot;/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py&quot;, line 248, in wrapped
+    return f(*args, **kwargs)
+  File &quot;/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py&quot;, line 281, in _fixed_getinnerframes
+    records = fix_frame_records_filenames(inspect.getinnerframes(etb, context))
+  File &quot;/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/inspect.py&quot;, line 1502, in getinnerframes
+    frameinfo = (tb.tb_frame,) + getframeinfo(tb, context)
+AttributeError: &#39;tuple&#39; object has no attribute &#39;tb_frame&#39;
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1907</span><span class="o">/</span><span class="mf">3853721945.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/datapane/client/api/user.py</span> in <span class="ni">token_connect</span><span class="nt">(open_url, action, server)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>                     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">182</span>                         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span>                 <span class="k">return</span> <span class="n">api_key</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">SystemExit</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">1</span> <span class="n">frame</span><span class="p">]</span>
+
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1753</span><span class="o">/</span><span class="mf">2391824048.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">load_dotenv</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">dp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATAPANE_TOKEN&#39;</span><span class="p">])</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">dp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DATAPANE_TOKEN&#39;</span><span class="p">))</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/os.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">    </span><span class="mi">679</span>         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">680</span>             <span class="c1"># raise KeyError with the original key value</span>
-<span class="ne">--&gt; </span><span class="mi">681</span>             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">682</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decodevalue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">683</span> 
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/datapane/client/api/user.py</span> in <span class="ni">login</span><span class="nt">(token, server, env, cli_login)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span>     <span class="k">if</span> <span class="n">token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span>         <span class="n">token</span> <span class="o">=</span> <span class="n">token_connect</span><span class="p">(</span><span class="s2">&quot;/accounts/login/&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;login&quot;</span><span class="p">,</span> <span class="n">server</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">server</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> 
 
-<span class="ne">KeyError</span>: &#39;DATAPANE_TOKEN&#39;
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/datapane/client/api/user.py</span> in <span class="ni">token_connect</span><span class="nt">(open_url, action, server)</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span>         <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">185</span>             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="ne">SystemExit</span>: 1
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">1</span> <span class="n">frame</span><span class="p">]</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">showtraceback</span><span class="nt">(self, exc_tuple, filename, tb_offset, exception_only, running_compiled_code)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2091</span>                            <span class="s1">&#39;the full traceback.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2092</span>                     <span class="n">stb</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">InteractiveTB</span><span class="o">.</span><span class="n">get_exception_only</span><span class="p">(</span><span class="n">etype</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">2093</span>                                                                      <span class="n">value</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2094</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2095</span>                     <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ni">get_exception_only</span><span class="nt">(self, etype, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">752</span>         <span class="n">value</span> <span class="p">:</span> <span class="n">exception</span> <span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">753</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">754</span><span class="s2">         return ListTB.structured_traceback(self, etype, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">755</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span><span class="s2">     def show_exception_only(self, etype, evalue):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ni">structured_traceback</span><span class="nt">(self, etype, evalue, etb, tb_offset, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span><span class="s2">                     chained_exceptions_tb_offset, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">632</span><span class="s2">                 + chained_exception_message</span>
+<span class="ne">--&gt; </span><span class="mi">633</span><span class="s2">                 + out_list)</span>
+<span class="g g-Whitespace">    </span><span class="mi">634</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span><span class="s2">         return out_list</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ni">structured_traceback</span><span class="nt">(self, etype, value, tb, tb_offset, number_of_lines_of_context)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1366</span><span class="s2">             self.tb = tb</span>
+<span class="g g-Whitespace">   </span><span class="mi">1367</span><span class="s2">         return FormattedTB.structured_traceback(</span>
+<span class="ne">-&gt; </span><span class="mi">1368</span><span class="s2">             self, etype, value, tb, tb_offset, number_of_lines_of_context)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1369</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1370</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ni">structured_traceback</span><span class="nt">(self, etype, value, tb, tb_offset, number_of_lines_of_context)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1266</span><span class="s2">             # Verbose modes need a full traceback</span>
+<span class="g g-Whitespace">   </span><span class="mi">1267</span><span class="s2">             return VerboseTB.structured_traceback(</span>
+<span class="ne">-&gt; </span><span class="mi">1268</span><span class="s2">                 self, etype, value, tb, tb_offset, number_of_lines_of_context</span>
+<span class="g g-Whitespace">   </span><span class="mi">1269</span><span class="s2">             )</span>
+<span class="g g-Whitespace">   </span><span class="mi">1270</span><span class="s2">         elif mode == &#39;Minimal&#39;:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ni">structured_traceback</span><span class="nt">(self, etype, evalue, etb, tb_offset, number_of_lines_of_context)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1123</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1124</span><span class="s2">         formatted_exception = self.format_exception_as_a_whole(etype, evalue, etb, number_of_lines_of_context,</span>
+<span class="ne">-&gt; </span><span class="mi">1125</span><span class="s2">                                                                tb_offset)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1126</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1127</span><span class="s2">         colors = self.Colors  # just a shorthand + quicker name lookup</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ni">format_exception_as_a_whole</span><span class="nt">(self, etype, evalue, etb, number_of_lines_of_context, tb_offset)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1080</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1081</span><span class="s2"> </span>
+<span class="ne">-&gt; </span><span class="mi">1082</span><span class="s2">         last_unique, recursion_repeat = find_recursion(orig_etype, evalue, records)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1083</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1084</span><span class="s2">         frames = self.format_records(records, last_unique, recursion_repeat)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ni">find_recursion</span><span class="nt">(etype, value, records)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">     # first frame (from in to out) that looks different.</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">     if not is_recursion_error(etype, value, records):</span>
+<span class="ne">--&gt; </span><span class="mi">382</span><span class="s2">         return len(records), 0</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">384</span><span class="s2">     # Select filename, lineno, func_name to track frames with</span>
+
+<span class="ne">TypeError</span>: object of type &#39;NoneType&#39; has no len()
 </pre></div>
 </div>
 </div>
