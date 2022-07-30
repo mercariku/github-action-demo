@@ -2,10 +2,16 @@
 title: Equity Research Associate
 author: Riku Driscoll
 logo: 'logo.png'
+root: notebooks
 
 latex:
   latex_documents:
     targetname: book.tex
+
+repository:
+  url                       : https://github.com/mercariku/research-equity-associate  # The URL to your book's repository
+  path_to_book              : "./"  # A path to your book's folder, relative to the repository root.
+  branch                    : master  # Which branch of the repository should be used when creating links
 
 sphinx:
   config:
