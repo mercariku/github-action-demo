@@ -1,0 +1,68 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/nbclient/client.py", line 664, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig_jm = px.sunburst(
+    qtr_jm,
+    path=["JM","Qtr_JM","BS_Section1","BS_Section2","BS_Section3","BS_Section4"],
+    values="BS_Ref",
+    color="Qtr_JM"
+)
+fig_jm.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m/tmp/ipykernel_1814/3100095841.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      3[0m     [0mpath[0m[0;34m=[0m[0;34m[[0m[0;34m"JM"[0m[0;34m,[0m[0;34m"Qtr_JM"[0m[0;34m,[0m[0;34m"BS_Section1"[0m[0;34m,[0m[0;34m"BS_Section2"[0m[0;34m,[0m[0;34m"BS_Section3"[0m[0;34m,[0m[0;34m"BS_Section4"[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m     [0mvalues[0m[0;34m=[0m[0;34m"BS_Ref"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 5[0;31m     [0mcolor[0m[0;34m=[0m[0;34m"Qtr_JM"[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      6[0m )
+[1;32m      7[0m [0mfig_jm[0m[0;34m.[0m[0mshow[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/plotly/express/_chart_types.py[0m in [0;36msunburst[0;34m(data_frame, names, values, parents, path, ids, color, color_continuous_scale, range_color, color_continuous_midpoint, color_discrete_sequence, color_discrete_map, hover_name, hover_data, custom_data, labels, title, template, width, height, branchvalues, maxdepth)[0m
+[1;32m   1543[0m         [0mconstructor[0m[0;34m=[0m[0mgo[0m[0;34m.[0m[0mSunburst[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1544[0m         [0mtrace_patch[0m[0;34m=[0m[0mdict[0m[0;34m([0m[0mbranchvalues[0m[0;34m=[0m[0mbranchvalues[0m[0;34m,[0m [0mmaxdepth[0m[0;34m=[0m[0mmaxdepth[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1545[0;31m         [0mlayout_patch[0m[0;34m=[0m[0mlayout_patch[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1546[0m     )
+[1;32m   1547[0m [0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/plotly/express/_core.py[0m in [0;36mmake_figure[0;34m(args, constructor, trace_patch, layout_patch)[0m
+[1;32m   1988[0m     [0mapply_default_cascade[0m[0;34m([0m[0margs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1989[0m [0;34m[0m[0m
+[0;32m-> 1990[0;31m     [0margs[0m [0;34m=[0m [0mbuild_dataframe[0m[0;34m([0m[0margs[0m[0;34m,[0m [0mconstructor[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1991[0m     [0;32mif[0m [0mconstructor[0m [0;32min[0m [0;34m[[0m[0mgo[0m[0;34m.[0m[0mTreemap[0m[0;34m,[0m [0mgo[0m[0;34m.[0m[0mSunburst[0m[0;34m,[0m [0mgo[0m[0;34m.[0m[0mIcicle[0m[0;34m][0m [0;32mand[0m [0margs[0m[0;34m[[0m[0;34m"path"[0m[0;34m][0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1992[0m         [0margs[0m [0;34m=[0m [0mprocess_dataframe_hierarchy[0m[0;34m([0m[0margs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/plotly/express/_core.py[0m in [0;36mbuild_dataframe[0;34m(args, constructor)[0m
+[1;32m   1404[0m [0;34m[0m[0m
+[1;32m   1405[0m     df_output, wide_id_vars = process_args_into_dataframe(
+[0;32m-> 1406[0;31m         [0margs[0m[0;34m,[0m [0mwide_mode[0m[0;34m,[0m [0mvar_name[0m[0;34m,[0m [0mvalue_name[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1407[0m     )
+[1;32m   1408[0m [0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/plotly/express/_core.py[0m in [0;36mprocess_args_into_dataframe[0;34m(args, wide_mode, var_name, value_name)[0m
+[1;32m   1205[0m                         [0;32mif[0m [0margument[0m [0;34m==[0m [0;34m"index"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1206[0m                             [0merr_msg[0m [0;34m+=[0m [0;34m"\n To use the index, pass it in directly as `df.index`."[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1207[0;31m                         [0;32mraise[0m [0mValueError[0m[0;34m([0m[0merr_msg[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1208[0m                 [0;32melif[0m [0mlength[0m [0;32mand[0m [0mlen[0m[0;34m([0m[0mdf_input[0m[0;34m[[0m[0margument[0m[0;34m][0m[0;34m)[0m [0;34m!=[0m [0mlength[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1209[0m                     raise ValueError(
+
+[0;31mValueError[0m: Value of 'values' is not the name of a column in 'data_frame'. Expected one of ['Qtr', 'JudiMarlinski', 'BS_Section1', 'BS_Section2', 'BS_Section3', 'BS_Section4', 'BS_Price_Ref'] but received: BS_Ref
+ValueError: Value of 'values' is not the name of a column in 'data_frame'. Expected one of ['Qtr', 'JudiMarlinski', 'BS_Section1', 'BS_Section2', 'BS_Section3', 'BS_Section4', 'BS_Price_Ref'] but received: BS_Ref
+
